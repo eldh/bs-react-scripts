@@ -11,6 +11,10 @@
 # production
 /build
 
+# reason
+.merlin
+/lib
+
 # misc
 .DS_Store
 .env.local
