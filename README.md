@@ -1,7 +1,13 @@
-# react-scripts
+# bs-react-scripts
 
-This package includes scripts and configuration used by [Create React App](https://github.com/facebook/create-react-app).<br>
-Please refer to its documentation:
+This package includes scripts for [Create React App](https://github.com/facebook/create-react-app).
 
-- [Getting Started](https://github.com/facebook/create-react-app/blob/master/README.md#getting-started) – How to create a new app.
-- [User Guide](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) – How to develop apps bootstrapped with Create React App.
+## Status
+Just started, not yet on npm.
+
+## Installation
+
+Soon you can do this:
+```sh
+npx create-react-app --scripts-version=bs-react-scripts
+```
