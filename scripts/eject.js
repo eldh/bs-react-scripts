@@ -199,7 +199,7 @@ inquirer
     // Add ESlint config
     // console.log(`  Adding ${cyan('ESLint')} configuration`)
     appPackage.eslintConfig = {
-      extends: require.resolve('../eslintConfig.js'),
+      extends: path.resolve(path.join(__dirname, '../eslintConfig.js')),
     }
 
     fs.writeFileSync(

@@ -292,7 +292,7 @@ module.exports = function(webpackEnv) {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
-                baseConfig: { extends: require.resolve('../eslintConfig.js') },
+                baseConfig: { extends: path.resolve(path.join(__dirname, '../eslintConfig.js')) },
                 ignore: false,
                 useEslintrc: false,
                 // @remove-on-eject-end

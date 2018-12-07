@@ -92,7 +92,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
 
   // Setup the eslint config
   appPackage.eslintConfig = {
-    extends: require.resolve('../eslintConfig.js'),
+    extends: path.resolve(path.join(__dirname, '../eslintConfig.js')),
   }
 
   // Setup the browsers list
