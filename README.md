@@ -1,6 +1,6 @@
 # bs-react-scripts
 
-This package includes scripts for [Create React App](https://github.com/facebook/create-react-app).
+Scripts for using [ReasonML](https://reasonml.github.io) with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Status
 Just started, not yet on npm.
