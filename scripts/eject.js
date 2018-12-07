@@ -197,10 +197,10 @@ inquirer
     }
 
     // Add ESlint config
-    console.log(`  Adding ${cyan('ESLint')} configuration`)
-    // appPackage.eslintConfig = {
-    //   extends: 'react-app',
-    // }
+    // console.log(`  Adding ${cyan('ESLint')} configuration`)
+    appPackage.eslintConfig = {
+      extends: require.resolve('../eslintConfig.js'),
+    }
 
     fs.writeFileSync(
       path.join(appPath, 'package.json'),
@@ -253,9 +253,5 @@ inquirer
       })
     }
     console.log(green('Ejected successfully!'))
-    console.log()
-
-    console.log(green('Please consider sharing why you ejected in this survey:'))
-    console.log(green('  http://goo.gl/forms/Bi6CZjk1EqsdelXk1'))
     console.log()
   })

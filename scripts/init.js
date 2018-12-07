@@ -21,7 +21,6 @@ const execSync = require('child_process').execSync
 const spawn = require('react-dev-utils/crossSpawn')
 const { defaultBrowsers } = require('react-dev-utils/browsersHelper')
 const os = require('os')
-const createEslintConfig = require('./utils/createEslintConfig')
 
 function isInGitRepository() {
   try {
@@ -92,7 +91,9 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
   }
 
   // Setup the eslint config
-  appPackage.eslintConfig = createEslintConfig()
+  appPackage.eslintConfig = {
+    extends: require.resolve('../eslintConfig.js'),
+  }
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers
