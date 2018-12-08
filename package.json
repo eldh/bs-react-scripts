@@ -1,6 +1,6 @@
 {
   "name": "bs-react-scripts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Configuration and scripts for ReasonML & Create React App.",
   "repository": "eldh/bs-react-scripts",
   "license": "MIT",
