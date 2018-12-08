@@ -339,12 +339,14 @@ module.exports = function(webpackEnv) {
                   [
                     'babel-plugin-named-asset-import',
                     'babel-preset-react-app',
+                    'babel-preset-emotion',
                     'react-dev-utils',
                     'react-scripts',
                   ]
                 ),
                 // @remove-on-eject-end
                 plugins: [
+                  require.resolve('babel-plugin-emotion'),
                   [
                     require.resolve('babel-plugin-named-asset-import'),
                     {

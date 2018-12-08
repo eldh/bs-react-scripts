@@ -1,7 +1,7 @@
 [%bs.raw {|require('./App.css')|}];
 [@bs.module] external logo : string = "./logo.svg";
 
-let component = ReasonReact.component(__MODULE__);
+let component = ReasonReact.statelessComponent(__MODULE__);
 
 let make = (~message, _children) => {
   ...component,
