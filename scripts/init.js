@@ -166,7 +166,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
         command = 'npm'
         args = ['install', '--save', verbose && '--verbose'].filter(e => e)
       }
-      args.push('react', 'react-dom')
+      args.push('react@next', 'react-dom@next')
 
       // Install additional template dependencies, if present
       const templateDependenciesPath = path.join(appPath, '.template.dependencies.json')
