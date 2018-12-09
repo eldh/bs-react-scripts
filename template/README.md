@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [reason-scripts](https://github.com/eldh/reason-scripts).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [bs-react-scripts](https://github.com/eldh/bs-react-scripts).
 
 ## Available Scripts
 

@@ -103,7 +103,6 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
       appPackage.scripts = {
         start: 'react-scripts start',
         build: 'react-scripts build',
-        compile: 'bsb -make-world -clean-world',
         test: 'react-scripts test',
         eject: 'react-scripts eject',
       }
