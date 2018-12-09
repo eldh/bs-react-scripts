@@ -11,9 +11,9 @@ const fs = require('fs')
 const chalk = require('chalk')
 const paths = require('../../config/paths')
 
-module.exports = ({ reactVersion }) => {
+module.exports = ({ reasonReactVersion }) => {
   return {
-    name: reactVersion + '-app',
+    name: reasonReactVersion + '-app',
     sources: [
       'src',
       {
@@ -31,7 +31,7 @@ module.exports = ({ reactVersion }) => {
         'in-source': true,
       },
     ],
-    'bs-dependencies': ['bs-css', '@glennsl/bs-jest', reactVersion],
+    'bs-dependencies': ['bs-css', '@glennsl/bs-jest', reasonReactVersion],
     refmt: 3,
   }
 }

@@ -83,7 +83,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
       {
         message: 'Which react bindings do you want to use?',
         type: 'list',
-        name: 'reactVersion',
+        name: 'reasonReactVersion',
         choices: [
           { name: 'ReactReact', value: 'reason-react' },
           { name: 'BsReact', value: 'bs-react' },
@@ -91,7 +91,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
       },
     ])
     .then(answers => {
-      const { reactVersion } = answers
+      const { reasonReactVersion } = answers
       const ownPath = path.dirname(require.resolve(path.join(__dirname, '..', 'package.json')))
       const appPackage = require(path.join(appPath, 'package.json'))
       const useYarn = fs.existsSync(path.join(appPath, 'yarn.lock'))
@@ -121,7 +121,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
       )
       fs.writeFileSync(
         path.join(appPath, 'bsconfig.json'),
-        JSON.stringify(createBsConfig({ reactVersion }), null, 2) + os.EOL
+        JSON.stringify(createBsConfig({ reasonReactVersion }), null, 2) + os.EOL
       )
 
       const readmeExists = fs.existsSync(path.join(appPath, 'README.md'))
@@ -182,7 +182,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
       // Install react and react-dom for backward compatibility with old CRA cli
       // which doesn't install react and react-dom along with react-scripts
       // or template is presetend (via --internal-testing-template)
-      if (!isReactInstalled(appPackage) || template) {
+      if (reasonReactVersion === 'bs-react') {
         console.log(`Installing react and react-dom using ${command}...`)
         console.log()
 
@@ -193,7 +193,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
         }
       }
       // Install devDependencies needed by Reason
-      const reasonDevDeps = ['bs-platform@4.0.7', reactVersion, '@glennsl/bs-jest', 'bs-css']
+      const reasonDevDeps = ['bs-platform@4.0.7', reasonReactVersion, '@glennsl/bs-jest', 'bs-css']
 
       const reasonArgs = [...reasonDevDeps]
       if (useYarn) {
