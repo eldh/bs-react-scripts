@@ -1,11 +1,3 @@
-// @remove-on-eject-begin
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-// @remove-on-eject-end
 'use strict'
 
 // Do this as the first thing so that any code reading it knows the right env.
@@ -85,6 +77,7 @@ checkBrowsers(paths.appPath, isInteractive)
       // We have not found a port.
       return
     }
+
     const config = configFactory('development')
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http'
     const appName = require(paths.appPackageJson).name
@@ -102,13 +95,12 @@ checkBrowsers(paths.appPath, isInteractive)
       if (err) {
         return console.log(err)
       }
-      if (isInteractive) {
-        clearConsole()
-      }
+      // if (isInteractive) {
+      //   clearConsole()
+      // }
       console.log(chalk.cyan('Starting the development server...\n'))
       openBrowser(urls.localUrlForBrowser)
     })
-
     ;['SIGINT', 'SIGTERM'].forEach(function(sig) {
       process.on(sig, function() {
         devServer.close()

@@ -101,7 +101,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
 
       // Setup the script rules
       appPackage.scripts = {
-        start: 'concurrently -n 🔷,🔺 "react-scripts start" "bsb -make-world -clean-world -w"',
+        start: 'react-scripts start',
         build: 'react-scripts build',
         compile: 'bsb -make-world -clean-world',
         test: 'react-scripts test',
@@ -194,13 +194,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
         }
       }
       // Install devDependencies needed by Reason
-      const reasonDevDeps = [
-        'bs-platform@4.0.7',
-        reactVersion,
-        '@glennsl/bs-jest',
-        'bs-css',
-        'concurrently',
-      ]
+      const reasonDevDeps = ['bs-platform@4.0.7', reactVersion, '@glennsl/bs-jest', 'bs-css']
 
       const reasonArgs = [...reasonDevDeps]
       if (useYarn) {
