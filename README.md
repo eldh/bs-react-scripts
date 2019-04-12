@@ -5,7 +5,7 @@ Scripts for using [ReasonML](https://reasonml.github.io) with [Create React App]
 ## Installation
 
 ```sh
-npx create-react-app MyApp --scripts-version=bs-react-scripts
+npx create-react-app my-app --scripts-version=bs-react-scripts
 ```
 
 ## Status
