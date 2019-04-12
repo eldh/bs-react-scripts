@@ -162,7 +162,7 @@ module.exports = function(appPath, appName, verbose, originalDirectory, template
     fs.unlinkSync(templateDependenciesPath)
   }
   // Install devDependencies needed by Reason
-  const reasonDevDeps = ['bs-platform@5.0.2', 'reason-react', '@glennsl/bs-jest', 'bs-css']
+  const reasonDevDeps = ['bs-platform@~5.0.2', 'reason-react@~0.7.0', '@glennsl/bs-jest', 'bs-css']
 
   const reasonArgs = [...reasonDevDeps]
   if (useYarn) {
