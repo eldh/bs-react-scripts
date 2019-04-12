@@ -6,11 +6,11 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-'use strict';
+'use strict'
 
-const chalk = require('chalk');
-const fs = require('fs');
-const path = require('path');
+const chalk = require('react-dev-utils/chalk')
+const fs = require('fs')
+const path = require('path')
 
 // We assume that having wrong versions of these
 // in the tree will likely break your setup.
@@ -27,53 +27,51 @@ function verifyPackageTree() {
     'jest',
     'webpack',
     'webpack-dev-server',
-  ];
+  ]
   // Inlined from semver-regex, MIT license.
   // Don't want to make this a dependency after ejecting.
   const getSemverRegex = () =>
-    /\bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?\b/gi;
-  const ownPackageJson = require('../../package.json');
-  const expectedVersionsByDep = {};
+    /\bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-]+(?:\.[\da-z-]+)*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?\b/gi
+  const ownPackageJson = require('../../package.json')
+  const expectedVersionsByDep = {}
   // Gather wanted deps
   depsToCheck.forEach(dep => {
-    const expectedVersion = ownPackageJson.dependencies[dep];
+    const expectedVersion = ownPackageJson.dependencies[dep]
     if (!expectedVersion) {
-      throw new Error('This dependency list is outdated, fix it.');
+      throw new Error('This dependency list is outdated, fix it.')
     }
     if (!getSemverRegex().test(expectedVersion)) {
       throw new Error(
         `The ${dep} package should be pinned, instead got version ${expectedVersion}.`
-      );
+      )
     }
-    expectedVersionsByDep[dep] = expectedVersion;
-  });
+    expectedVersionsByDep[dep] = expectedVersion
+  })
   // Verify we don't have other versions up the tree
-  let currentDir = __dirname;
+  let currentDir = __dirname
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    const previousDir = currentDir;
-    currentDir = path.resolve(currentDir, '..');
+    const previousDir = currentDir
+    currentDir = path.resolve(currentDir, '..')
     if (currentDir === previousDir) {
       // We've reached the root.
-      break;
+      break
     }
-    const maybeNodeModules = path.resolve(currentDir, 'node_modules');
+    const maybeNodeModules = path.resolve(currentDir, 'node_modules')
     if (!fs.existsSync(maybeNodeModules)) {
-      continue;
+      continue
     }
     depsToCheck.forEach(dep => {
-      const maybeDep = path.resolve(maybeNodeModules, dep);
+      const maybeDep = path.resolve(maybeNodeModules, dep)
       if (!fs.existsSync(maybeDep)) {
-        return;
+        return
       }
-      const maybeDepPackageJson = path.resolve(maybeDep, 'package.json');
+      const maybeDepPackageJson = path.resolve(maybeDep, 'package.json')
       if (!fs.existsSync(maybeDepPackageJson)) {
-        return;
+        return
       }
-      const depPackageJson = JSON.parse(
-        fs.readFileSync(maybeDepPackageJson, 'utf8')
-      );
-      const expectedVersion = expectedVersionsByDep[dep];
+      const depPackageJson = JSON.parse(fs.readFileSync(maybeDepPackageJson, 'utf8'))
+      const expectedVersion = expectedVersionsByDep[dep]
       if (depPackageJson.version !== expectedVersion) {
         console.error(
           chalk.red(
@@ -85,9 +83,7 @@ function verifyPackageTree() {
             `The ${chalk.bold(
               ownPackageJson.name
             )} package provided by Create React App requires a dependency:\n\n` +
-            chalk.green(
-              `  "${chalk.bold(dep)}": "${chalk.bold(expectedVersion)}"\n\n`
-            ) +
+            chalk.green(`  "${chalk.bold(dep)}": "${chalk.bold(expectedVersion)}"\n\n`) +
             `Don't try to install it manually: your package manager does it automatically.\n` +
             `However, a different version of ${chalk.bold(
               dep
@@ -105,31 +101,23 @@ function verifyPackageTree() {
             `To ${chalk.green(
               'fix'
             )} the dependency tree, try following the steps below in the exact order:\n\n` +
-            `  ${chalk.cyan('1.')} Delete ${chalk.bold(
-              'package-lock.json'
-            )} (${chalk.underline('not')} ${chalk.bold(
-              'package.json'
-            )}!) and/or ${chalk.bold('yarn.lock')} in your project folder.\n` +
-            `  ${chalk.cyan('2.')} Delete ${chalk.bold(
-              'node_modules'
+            `  ${chalk.cyan('1.')} Delete ${chalk.bold('package-lock.json')} (${chalk.underline(
+              'not'
+            )} ${chalk.bold('package.json')}!) and/or ${chalk.bold(
+              'yarn.lock'
             )} in your project folder.\n` +
-            `  ${chalk.cyan('3.')} Remove "${chalk.bold(
-              dep
-            )}" from ${chalk.bold('dependencies')} and/or ${chalk.bold(
-              'devDependencies'
-            )} in the ${chalk.bold(
+            `  ${chalk.cyan('2.')} Delete ${chalk.bold('node_modules')} in your project folder.\n` +
+            `  ${chalk.cyan('3.')} Remove "${chalk.bold(dep)}" from ${chalk.bold(
+              'dependencies'
+            )} and/or ${chalk.bold('devDependencies')} in the ${chalk.bold(
               'package.json'
             )} file in your project folder.\n` +
-            `  ${chalk.cyan('4.')} Run ${chalk.bold(
-              'npm install'
-            )} or ${chalk.bold(
+            `  ${chalk.cyan('4.')} Run ${chalk.bold('npm install')} or ${chalk.bold(
               'yarn'
             )}, depending on the package manager you use.\n\n` +
             `In most cases, this should be enough to fix the problem.\n` +
             `If this has not helped, there are a few other things you can try:\n\n` +
-            `  ${chalk.cyan('5.')} If you used ${chalk.bold(
-              'npm'
-            )}, install ${chalk.bold(
+            `  ${chalk.cyan('5.')} If you used ${chalk.bold('npm')}, install ${chalk.bold(
               'yarn'
             )} (http://yarnpkg.com/) and repeat the above steps with it instead.\n` +
             `     This may help because npm has known issues with package hoisting which may get resolved in future versions.\n\n` +
@@ -152,11 +140,11 @@ function verifyPackageTree() {
             chalk.cyan(
               `P.S. We know this message is long but please read the steps above :-) We hope you find them helpful!\n`
             )
-        );
-        process.exit(1);
+        )
+        process.exit(1)
       }
-    });
+    })
   }
 }
 
-module.exports = verifyPackageTree;
+module.exports = verifyPackageTree
