@@ -6,7 +6,7 @@ external registerServiceWorker : unit => unit = "register";
 external unregisterServiceWorker : unit => unit = "unregister";
 
 ReactDOMRe.renderToElementWithId(
-  <App message="Welcome to BsReact" />,
+  <App message="Welcome to ReasonReact" />,
   "root",
 );
 
